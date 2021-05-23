@@ -27,10 +27,6 @@ export class MySQLBaseDataSource {
   static getInstance(): MySQLBaseDataSource {
 
     return this._instance || (this._instance = new this());
-    // if (!(this._db instanceof knex)) {
-    //   this._db = knex(config);
-    // }
-    // return this._db;
   }
 
 }

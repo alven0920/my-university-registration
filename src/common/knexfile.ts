@@ -49,7 +49,7 @@ const makeAfterCreate = (
   }
 };
 
-export const config: Config = {
+const config: Config = {
   client,
   connection: {
     host,
@@ -71,3 +71,4 @@ export function prepareTable(table: CreateTableBuilder): CreateTableBuilder {
   return table;
 }
 
+export default config;
