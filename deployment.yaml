@@ -1,0 +1,70 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: my-university-registration-service-config
+  namespace: myuniv
+data:
+  # Application
+  APP_ID: INGEST_INDEXING_SERVICE
+  PORT: "8088"
+
+  # Database
+  DB_CLIENT: mysql2
+  DB_HOST: "127.0.0.1"
+  DB_DATABASE: my_university
+  DB_USERNAME: root
+  DB_PASSWORD: ""
+  DB_INTERACTIVE_TIMEOUT: '30',
+  DB_WAIT_TIMEOUT: "0"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-university-registration
+  namespace: myuniv
+  labels:
+    app: registration-service
+spec:
+  selector:
+    matchLabels:
+      name: my-university-registration
+      app: registration-service
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: my-university-registration
+        app: registration-service
+      annotations:
+        linkerd.io/inject: enabled
+    spec:
+      imagePullSecrets:
+        - name: aws-ecr-registry
+      containers:
+      - name: my-university-registration
+        image: 289085087855.dkr.ecr.ap-southeast-1.amazonaws.com/aaa-indexing:v1.0.5
+        resources: {}
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8088
+          name: http
+          protocol: TCP
+        envFrom:
+        - configMapRef:
+            name: my-university-registration-service-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: registration-service
+  namespace: myuniv
+  labels:
+    app: registration-service
+spec:
+  selector:
+    app: registration-service
+  type: NodePort
+  ports:
+  - port: 8088
+    targetPort: 8088

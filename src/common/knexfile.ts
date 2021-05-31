@@ -10,6 +10,7 @@ const {
   host,
   interactiveTimeout,
   password,
+  port,
   username,
   waitTimeout
 } = dbConfig;
@@ -56,6 +57,7 @@ const config: Config = {
     database,
     user: username,
     password,
+    port
   },
   pool: {
     afterCreate: makeAfterCreate(
