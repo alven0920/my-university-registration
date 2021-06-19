@@ -1,6 +1,6 @@
 import knex from 'knex';
 
-import { config } from '../../common/knexfile';
+import config from '../../common/knexfile';
 
 export class MySQLBaseDataSource {
   private static _instance: MySQLBaseDataSource;
