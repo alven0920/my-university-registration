@@ -8,7 +8,7 @@ const {
   DB_INTERACTIVE_TIMEOUT = '30',
   DB_WAIT_TIMEOUT = '0',
 
-  PORT = '8088',
+  PORT = '9002',
   APP_ID = 'MY_UNIVERSITY_REGISTRATION_DEFAULT',
   IS_CLUSTERED = 'false'
 } = process.env;

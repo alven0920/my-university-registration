@@ -16,4 +16,9 @@ ARG DB_WAIT_TIMEOUT
 
 EXPOSE 9002
 
-RUN npm ci && npm run build
+RUN npm install -g --quiet typescript pm2
+RUN npm install
+
+RUN npm run build
+
+CMD ["node", "build/interface/rest/index.js"]
