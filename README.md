@@ -7,13 +7,15 @@ This is a microservice boilerplate for "My University" registration
 
 * Node JS version >= 14.0.0 (NPM >= 6.14.4)
 
+### Installing dependencies
+1. Execute `docker-compose up` to install external dependencies i.e. MySQL database container
+
 ### Setup
 
 1. Run `npm install` to install dependencies
 
-### Technology Stack
+## Technology Stack
 
 1. TypeScript 4.x.x (JavaScript)
 2. Jest (for unit testing)
 3. eslint (for linting - format correction)
-
