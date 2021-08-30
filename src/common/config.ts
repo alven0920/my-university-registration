@@ -7,7 +7,17 @@ const {
   DB_PASSWORD = 'Abcd12345',
   DB_INTERACTIVE_TIMEOUT = '30',
   DB_WAIT_TIMEOUT = '0',
+
+  PORT = '9002',
+  APP_ID = 'MY_UNIVERSITY_REGISTRATION_DEFAULT',
+  IS_CLUSTERED = 'false'
 } = process.env;
+
+export const serverSettings = {
+  isClustered: IS_CLUSTERED === 'true',
+  appId: APP_ID,
+  port: parseInt(PORT, 10)
+};
 
 export const dbConfig = {
   client: DB_CLIENT,

@@ -6,16 +6,16 @@ metadata:
   namespace: myuniv
 data:
   # Application
-  APP_ID: INGEST_INDEXING_SERVICE
-  PORT: "8088"
+  APP_ID: MY_UNIVERSITY_REGISTRATION_SERVICE
+  PORT: "9002"
 
   # Database
   DB_CLIENT: mysql2
   DB_HOST: "127.0.0.1"
   DB_DATABASE: my_university
   DB_USERNAME: root
-  DB_PASSWORD: ""
-  DB_INTERACTIVE_TIMEOUT: '30',
+  DB_PASSWORD: Abcd12345
+  DB_INTERACTIVE_TIMEOUT: "30",
   DB_WAIT_TIMEOUT: "0"
 ---
 apiVersion: apps/v1
@@ -43,7 +43,7 @@ spec:
         - name: aws-ecr-registry
       containers:
       - name: my-university-registration
-        image: 289085087855.dkr.ecr.ap-southeast-1.amazonaws.com/aaa-indexing:v1.0.5
+        image: ventepesos/my-university-registration
         resources: {}
         imagePullPolicy: Always
         ports:
